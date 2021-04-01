@@ -1,0 +1,22 @@
+{
+  "name": "full-stack-evaluation",
+  "version": "1.0.0",
+  "description": "Tool for assessing a candidates front end and back end web development proficiency",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpallansch/Full-Stack-Web-Developer-Evaluation.git"
+  },
+  "author": "mpallansch@adittech.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mpallansch/Full-Stack-Web-Developer-Evaluation/issues"
+  },
+  "homepage": "https://github.com/mpallansch/Full-Stack-Web-Developer-Evaluation#readme",
+  "dependencies": {
+    "sqlite3": "^5.0.2"
+  }
+}

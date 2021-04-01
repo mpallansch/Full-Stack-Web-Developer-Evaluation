@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Full Stack Evaluation</title>
+	</head>
+	<body>
+		<div id="response">
+
+		</div>
+
+		<script>
+			function serverResponse () {
+				var response = this.responseText;
+				var element = document.getElementById('response');
+
+				/*Challenge 2: Render a list of the users' first names returned from the server */
+
+				/*Challenge 3: Alert the users' last name when one of the first names is clicked */
+
+  				element.innerText = response;
+			}
+
+			function serverError () {
+  				document.getElementById('response').innerText = 'An error occured with the server request';
+			}
+
+
+			var req = new XMLHttpRequest();
+
+			req.addEventListener("load", serverResponse);
+			req.addEventListener("error", serverError);
+
+			req.open("GET", "http://127.0.0.1:3000");
+			req.send();	
+		</script>
+	</body>
+</html>
