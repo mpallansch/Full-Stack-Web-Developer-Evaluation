@@ -10,14 +10,17 @@
 
 		<script>
 			function serverResponse () {
-				var response = this.responseText;
+				var responseString = this.responseText;
 				var element = document.getElementById('response');
 
-				/*Challenge 2: Render a list of the users' first names returned from the server */
+				/*Challenge 2: Render a list of the users' first names into the element with id "response"
+				  	from the string that the server returns */
 
 				/*Challenge 3: Alert the users' last name when one of the first names is clicked */
 
-  				element.innerText = response;
+				/*Challenge 4: Have the first names of all users with the 'role' property equal to 'Admin' show with green font color  */
+
+  				element.innerText = responseString;
 			}
 
 			function serverError () {
@@ -30,7 +33,7 @@
 			req.addEventListener("load", serverResponse);
 			req.addEventListener("error", serverError);
 
-			req.open("GET", "http://127.0.0.1:3000");
+			req.open("GET", "http://127.0.0.1:3001");
 			req.send();	
 		</script>
 	</body>
