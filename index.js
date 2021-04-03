@@ -56,6 +56,7 @@ const server = http.createServer((req, res) => {
       res.end('Error requesting data');
     }
 
+    // rows is a currently JavaScript object (ex. [{firstname: 'John', ...}, {firstname: 'Jane'}, ...])
     let structuredData = rows; //c) Format 'rows' variable into a string to return to the client
       
     res.end( structuredData );
