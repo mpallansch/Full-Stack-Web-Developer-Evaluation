@@ -2,6 +2,11 @@
 <html>
 	<head>
 		<title>Full Stack Evaluation</title>
+		<style>
+			.record.green {
+				color: green;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="response">
@@ -11,16 +16,33 @@
 		<script>
 			function serverResponse () {
 				var responseString = this.responseText;
+				var records = JSON.parse(responseString);
 				var element = document.getElementById('response');
 
 				/*Challenge 2: Render a list of the users' first names into the element with id "response"
 				  	from the string that the server returns */
+				var list = document.createElement('ul');
+				records.forEach(function(record) {
+					var item = document.createElement('li');
+					item.innerText = record.firstname;
 
-				/*Challenge 3: Alert the users' last name when one of the first names is clicked */
+					/*Challenge 3: Alert the users' last name when one of the first names is clicked */
+					item.setAttribute('data-last-name', record.lastname);
+					item.addEventListener('click', function(e){
+						alert(e.target.getAttribute('data-last-name'));
+					});
 
-				/*Challenge 4: Have the first names of all users with the 'role' property equal to 'Admin' show with green font color  */
+					/*Challenge 4: Have the first names of all users with the 'role' property equal to 'Admin' show with green font color  */
+					item.className = 'record' + ( record.role === 'Admin' ? ' green' : '');
 
-  				element.innerText = responseString;
+					list.appendChild(item);
+				});
+				
+				
+
+				
+
+  				element.appendChild(list);
 			}
 
 			function serverError () {

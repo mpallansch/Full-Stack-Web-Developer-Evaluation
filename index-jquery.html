@@ -3,6 +3,11 @@
 	<head>
 		<title>Full Stack Evaluation</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<style>
+			.record.green {
+				color: green;
+			}
+		</style>
 	</head>
 	<body>
 		<div id="response">
@@ -13,13 +18,31 @@
 			$( document ).ready(function() {
 				$.get('http://127.0.0.1:3001')
 					.done(function(response) {
+						let records = JSON.parse(response);
+
 						/*Challenge 2: Render a list of the users' first names into the element with id "response"
 				  			from the string that the server returns */
+						var ul$ = $('<ul/>');
+						records.forEach(function(record){
+							var li$ = $('<li/>');
+							li$.addClass('record');
+							li$.text(record.firstname);
 
-						/*Challenge 3: Alert the users' last name when one of the first names is clicked */
+							/*Challenge 3: Alert the users' last name when one of the first names is clicked */
+							li$.data('last-name', record.lastname);
+							li$.click(function(e){
+								alert($(e.target).data('last-name'));
+							});
 
-						/*Challenge 4: Have the first names of all users with the 'role' property equal to 'Admin' show with green font color  */
-						$('#response').text(response);
+							/*Challenge 4: Have the first names of all users with the 'role' property equal to 'Admin' show with green font color  */
+							if(record.role === 'Admin'){
+								li$.addClass('green');
+							}
+
+							ul$.append(li$)
+						});
+
+						$('#response').append(ul$);
 					})
 					.fail(function(err) {
 						console.log(err);

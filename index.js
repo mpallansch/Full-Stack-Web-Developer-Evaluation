@@ -46,9 +46,9 @@ const server = http.createServer((req, res) => {
       Help with SQLite: https://www.sqlitetutorial.net/
   */
 
-  /* //a) Uncomment this code block
+  //a) Uncomment this code block
     db.all(
-    '' //b) Write SQL query here
+    'SELECT * FROM Users WHERE status="Active"' //b) Write SQL query here
     , (err, rows) => {
     if(err){
       console.log(err);
@@ -56,13 +56,13 @@ const server = http.createServer((req, res) => {
       res.end('Error requesting data');
     }
 
-    let structuredData = rows; //c) Format 'rows' variable into a string to return to the client
+    let structuredData = JSON.stringify(rows); //c) Format 'rows' variable into a string to return to the client
       
     res.end( structuredData );
-  });*/
+  });
 
   //a) Comment the line below
-  res.end('Hello World');
+  //res.end('Hello World');
 });
 
 server.listen(port, hostname, () => {
